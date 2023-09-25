@@ -1,0 +1,12 @@
+:root {
+  --purple: #854dff;
+}
+
+.input-result {
+  display: flex;
+  font-size: 64px;
+}
+.day-result {
+    color: var(--purple);
+    margin-right: 10px;
+}
