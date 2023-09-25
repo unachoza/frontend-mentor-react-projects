@@ -1,6 +1,6 @@
 import "./FormInput.css"
 
-const FormInput = ({ id, name, placeholder, value, onChange, error }) => {
+const FormInput = ({ id, name, placeholder, value, onChange, onFocus, error }) => {
     return (
         <div className="text-input">
             <label for={name}>{name.toUpperCase()}</label>
@@ -12,6 +12,7 @@ const FormInput = ({ id, name, placeholder, value, onChange, error }) => {
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
+            // onFocus={onFocus}
             />
             {/* <div className={error ? "error-message" : "no-error"}>anything</div> */}
             <div className="no-error">anything</div>
