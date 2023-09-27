@@ -3,11 +3,13 @@
   --lightGrey: hsl(0, 3%, 63%);
   --white: white;
 }
+
 * {
   margin: 0;
   padding: 0;
   font-family: Poppins, sans-serif;
 }
+
 .container {
   position: absolute;
   top: 50%;
@@ -18,9 +20,11 @@
   background-color: white;
   padding: 30px;
 }
+
 form {
   display: flex;
 }
+
 .parent {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -42,21 +46,26 @@ form {
   grid-area: 2 / 4 / 3 / 5;
 }
 
-button{
+button {
   color: white;
   background-color: var(--purple);
   border: none;
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
 }
-button:hover{
-  cursor: pointer;  
+
+button:hover {
+  cursor: pointer;
 }
-svg{
+
+svg {
   rotate: 270deg;
 }
-.results-container{
-  font-size: 32px;
-  font-weight: bolder;
+
+.results-container {
+}
+
+hr {
+  margin-top: -2.5rem;
 }

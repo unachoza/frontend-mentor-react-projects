@@ -7,21 +7,29 @@
 .no-error {
   visibility: hidden;
 }
+
 .error-message {
-  font-size: 16px;
+  font-size: 10px;
+  color: var(--light-red);
+  margin-top: 5px;
 }
+.error{
+  border: solid var(--light-red);
+}
+
 input[type="text"] {
   margin-top: 8px;
   cursor: pointer;
-  width: 124px;
+  width: 75px;
+  height: 30px;
   border: 1px solid var(--lightGrey);
   border-radius: 5px;
   padding-inline: 16px;
   padding-block: 14px;
-  font-size: 28px;
-  font-weight: bolder;
+  font-size: 1.5rem;
   color: #000;
 }
+
 input[type="text"]:active,
 input[type="text"]:focus,
 input[type="text"]:focus-visible {
@@ -33,5 +41,6 @@ input[type="text"]:focus-visible {
   flex-direction: column;
   color: var(--lightGrey);
   font-weight: 700;
+  height: 50px;
   background-color: inherit
 }

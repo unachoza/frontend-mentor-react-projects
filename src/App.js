@@ -10,7 +10,9 @@ const App = () => {
   const [dayResult, setResultDay] = useState('');
   const [monthResult, setResultMonth] = useState('');
   const [yearResult, setResultYear] = useState('');
-  const [error, setError] = useState('');
+  const [errorDay, setErrorDay] = useState('');
+  const [errorMonth, setErrorMonth] = useState('');
+  const [errorYear, setErrorYear] = useState('');
 
   const errorMessages = {
     empty: "This field is required",
@@ -21,16 +23,19 @@ const App = () => {
 
   //add functions
   const checkDayInput = (dayInput) => {
-    if (dayInput === "") return
     const regExDays = /\b(0?[1-9]|[12][0-9]|3[01])\b/g
-    let error = regExDays.test(dayInput)
+    if (!regExDays.test(dayInput)) {
+      return setErrorDay(errorMessages.day)
+    }
     const currentDay = new Date().getDate()
     let diff = currentDay - dayInput
     setResultDay(diff)
   }
   const checkMonthInput = monthInput => {
     const regExMonth = /\b(0?[1-9]|1[012])\b/g
-    let error = regExMonth.test(monthInput)
+    if (!regExMonth.test(monthInput)) {
+      return setErrorMonth(errorMessages.month)
+    }
     const currentMonth = new Date().getMonth() + 1
     const diff = currentMonth - monthInput
     setResultMonth(diff)
@@ -38,34 +43,16 @@ const App = () => {
   const checkYearInput = yearInput => {
     const currentYear = new Date().getFullYear()
     if (yearInput > currentYear) {
-      console.log(yearInput, currentYear, 'that is the future')
-      return setError(errorMessages.year)
+      return setErrorYear(errorMessages.year)
     }
     const diff = currentYear - yearInput
     setResultYear(diff)
-  }
-
-  const validateFormInputs = (input) => {
-    //if input is valid use input value
-    //if input is invalid change styling to red
-    // add error message
-    console.log('valid')
   }
   const submitForm = (e) => {
     e.preventDefault()
     checkDayInput(dayInput)
     checkMonthInput(monthInput)
     checkYearInput(yearInput)
-  }
-
-
-  const calAge = (values) => {
-    // const today = new Date()
-    // const getDayDifference = (today, input) => difference
-    // const getMonthDifference = (today, input) => difference
-    // const getYearDifference = (today, input) => difference
-    //substract input values from todays date
-
   }
 
   return (
@@ -81,7 +68,7 @@ const App = () => {
                 value={dayInput}
                 onChange={e => setInputDay(e.target.value)}
                 onFocus={() => checkDayInput(dayInput)}
-                error
+                error={errorDay}
               />
             </div>
             <div className='div2'>
@@ -92,7 +79,7 @@ const App = () => {
                 value={monthInput}
                 onChange={e => setInputMonth(e.target.value)}
                 onFocus={() => checkDayInput(monthInput)}
-                error
+                error={errorMonth}
               />
             </div>
             <div className='div3'>
@@ -103,7 +90,7 @@ const App = () => {
                 value={yearInput}
                 onChange={e => setInputYear(e.target.value)}
                 onFocus={() => checkYearInput(yearInput)}
-                error
+                error={errorYear}
               />
             </div>
             <div className='div4'>
@@ -118,9 +105,9 @@ const App = () => {
           </form>
           <hr />
           <div class="results-container">
-            <InputResult result={yearResult} label="year" />
-            <InputResult result={monthResult} label="month" />
-            <InputResult result={dayResult} label="day" />
+            <InputResult result={yearResult} label="years" />
+            <InputResult result={monthResult} label="months" />
+            <InputResult result={dayResult} label="days" />
           </div>
         </div>
       </body>
